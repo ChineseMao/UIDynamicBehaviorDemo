@@ -34,10 +34,17 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKw-eB-vlE">
-                                <rect key="frame" x="262.5" y="335" width="75" height="30"/>
+                                <rect key="frame" x="262" y="335" width="75" height="30"/>
                                 <state key="normal" title="重力加碰撞"/>
                                 <connections>
                                     <action selector="startAnimationCollision:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d3S-hu-Wgc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRr-hA-hXW">
+                                <rect key="frame" x="285" y="230" width="30" height="30"/>
+                                <state key="normal" title="碰撞"/>
+                                <connections>
+                                    <action selector="startAnimationCollision1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ko4-aO-OgO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -45,6 +52,8 @@
                         <constraints>
                             <constraint firstItem="RKw-eB-vlE" firstAttribute="top" secondItem="aJX-mq-8Me" secondAttribute="bottom" constant="20" id="0bz-oQ-prP"/>
                             <constraint firstItem="Qya-1Y-zuR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="42" id="Diz-u7-Nfa"/>
+                            <constraint firstItem="GRr-hA-hXW" firstAttribute="centerX" secondItem="aJX-mq-8Me" secondAttribute="centerX" id="T7S-HY-iJS"/>
+                            <constraint firstItem="aJX-mq-8Me" firstAttribute="top" secondItem="GRr-hA-hXW" secondAttribute="bottom" constant="25" id="bZ1-jm-k8m"/>
                             <constraint firstItem="Qya-1Y-zuR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="cwQ-xm-TGB"/>
                             <constraint firstItem="aJX-mq-8Me" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hoM-JY-kU7"/>
                             <constraint firstItem="aJX-mq-8Me" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v0g-ru-WEu"/>
@@ -57,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="356"/>
+            <point key="canvasLocation" x="280" y="333"/>
         </scene>
     </scenes>
 </document>

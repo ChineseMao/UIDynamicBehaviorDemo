@@ -104,6 +104,27 @@
 //    　　@property (nonatomic, assign) id <UIDynamicAnimatorDelegate> delegate;//代理对象（能监听物理仿真器的仿真过程，比如开始和结束）
 }
 
+- (IBAction)startAnimationCollision1:(UIButton *)sender {
+    
+    // 1.重力行为
+    UIGravityBehavior *gravity = [[UIGravityBehavior alloc] init];
+    [gravity addItem:self.animationView];
+    
+    // 2.碰撞检测行为
+    UICollisionBehavior *collision = [[UICollisionBehavior alloc] init];
+    [collision addItem:self.animationView];
+    CGPoint startP = self.animationView.center;
+    CGPoint endP = CGPointMake(320, 600);
+    [collision addBoundaryWithIdentifier:@"line1" fromPoint:startP toPoint:endP];
+    CGPoint startP1 = CGPointMake(320, 0);
+    [collision addBoundaryWithIdentifier:@"line2" fromPoint:startP1 toPoint:endP];
+    //    collision.translatesReferenceBoundsIntoBoundary = YES;
+    
+    [self.animator removeAllBehaviors];
+    // 3.开始仿真
+    [self.animator addBehavior:gravity];
+    [self.animator addBehavior:collision];
+}
 
 
 
