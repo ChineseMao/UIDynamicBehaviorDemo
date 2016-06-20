@@ -47,6 +47,13 @@
                                     <action selector="startAnimationCollision1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ko4-aO-OgO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kho-IU-cX3">
+                                <rect key="frame" x="269" y="373" width="60" height="30"/>
+                                <state key="normal" title="摇摆摇摆"/>
+                                <connections>
+                                    <action selector="attachmentBehaviorAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BbC-5c-TdZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -56,7 +63,9 @@
                             <constraint firstItem="aJX-mq-8Me" firstAttribute="top" secondItem="GRr-hA-hXW" secondAttribute="bottom" constant="25" id="bZ1-jm-k8m"/>
                             <constraint firstItem="Qya-1Y-zuR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="cwQ-xm-TGB"/>
                             <constraint firstItem="aJX-mq-8Me" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hoM-JY-kU7"/>
+                            <constraint firstItem="kho-IU-cX3" firstAttribute="top" secondItem="RKw-eB-vlE" secondAttribute="bottom" constant="8" id="tFS-a2-Oz7"/>
                             <constraint firstItem="aJX-mq-8Me" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v0g-ru-WEu"/>
+                            <constraint firstItem="kho-IU-cX3" firstAttribute="centerX" secondItem="RKw-eB-vlE" secondAttribute="centerX" id="wmI-Y9-SfJ"/>
                             <constraint firstItem="RKw-eB-vlE" firstAttribute="centerX" secondItem="aJX-mq-8Me" secondAttribute="centerX" id="zKc-St-Spg"/>
                         </constraints>
                     </view>

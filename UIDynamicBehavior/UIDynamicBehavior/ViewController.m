@@ -8,7 +8,10 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
+
+@interface ViewController ()<UIDynamicAnimatorDelegate>
 
 @property (strong, nonatomic) UIDynamicAnimator *animator;
 @property (strong, nonatomic) IBOutlet UIView *animationView;
@@ -21,6 +24,7 @@
     
     if (!_animator) {
         _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+        _animator.delegate = self;
     }
     return _animator;
 }
@@ -113,11 +117,11 @@
     // 2.碰撞检测行为
     UICollisionBehavior *collision = [[UICollisionBehavior alloc] init];
     [collision addItem:self.animationView];
-    CGPoint startP = self.animationView.center;
-    CGPoint endP = CGPointMake(320, 600);
+    CGPoint startP = CGPointMake(0, kHeight/2);
+    CGPoint endP = CGPointMake(kWidth/2, kHeight);
     [collision addBoundaryWithIdentifier:@"line1" fromPoint:startP toPoint:endP];
-    CGPoint startP1 = CGPointMake(320, 0);
-    [collision addBoundaryWithIdentifier:@"line2" fromPoint:startP1 toPoint:endP];
+    CGPoint startP1 = CGPointMake(kWidth*2, kHeight-50);
+    [collision addBoundaryWithIdentifier:@"line2" fromPoint:endP toPoint:startP1];
     //    collision.translatesReferenceBoundsIntoBoundary = YES;
     
     [self.animator removeAllBehaviors];
@@ -126,6 +130,29 @@
     [self.animator addBehavior:collision];
 }
 
+- (IBAction)attachmentBehaviorAction:(UIButton *)sender {
+    
+    UIAttachmentBehavior *attachmentB = [[UIAttachmentBehavior alloc] initWithItem:self.animationView attachedToAnchor:CGPointMake(CGRectGetMaxX(self.animationView.frame), CGRectGetMaxY(self.animationView.frame))];
+    UIGravityBehavior *gravityB = [[UIGravityBehavior alloc] initWithItems:@[self.animationView]];
+    //重力方向；
+//    [gravityB setAngle:M_PI magnitude:1.0f];
+    gravityB.angle = -M_PI/2;
+    [self.animator removeAllBehaviors];
+    //开始
+    [self.animator addBehavior:attachmentB];
+    [self.animator addBehavior:gravityB];
+}
+
+//UIDynamicAnimator delegate 代理方法
+//结束时调用；
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator {
+    
+}
+
+//开始时调用；
+- (void)dynamicAnimatorWillResume:(UIDynamicAnimator *)animator {
+    
+}
 
 
 @end
