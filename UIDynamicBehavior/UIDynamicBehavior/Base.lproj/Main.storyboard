@@ -41,8 +41,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRr-hA-hXW">
-                                <rect key="frame" x="285" y="230" width="30" height="30"/>
-                                <state key="normal" title="碰撞"/>
+                                <rect key="frame" x="270" y="230" width="60" height="30"/>
+                                <state key="normal" title="碰撞线条"/>
                                 <connections>
                                     <action selector="startAnimationCollision1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ko4-aO-OgO"/>
                                 </connections>

@@ -31,6 +31,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+        UIImageView *imageView=[[UIImageView alloc] initWithFrame:self.view.frame];
+        [self.view addSubview:imageView];
+    
+        UIGraphicsBeginImageContext(imageView.frame.size);
+        [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+        CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
+        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 5.0);  //线宽
+        CGContextSetAllowsAntialiasing(UIGraphicsGetCurrentContext(), YES);
+        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1.0, 0.0, 0.0, 1.0);  //颜色
+        CGContextBeginPath(UIGraphicsGetCurrentContext());
+        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 100, 100);  //起点坐标
+        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), 200, 100);   //终点坐标
+        CGContextStrokePath(UIGraphicsGetCurrentContext());
+        imageView.image=UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();  
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();//获取当前ctx
+    CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
+    CGContextSetLineWidth(ctx, 5.0);  //线宽
+    CGContextSetAllowsAntialiasing(ctx, YES);
+    CGContextSetRGBStrokeColor(ctx, 230/265.0, 48/265.0, 48/256.0, 1.0);  //颜色
+    CGContextBeginPath(ctx);
+    CGContextMoveToPoint(ctx, 0, kHeight/2);  //起点坐标
+    CGContextAddLineToPoint(ctx, kWidth/2, 0);   //终点坐标
+    CGContextStrokePath(ctx);
+    
+    //画两条射线
+    // 创建一个Path句柄
+    CGMutablePathRef pathRef = CGPathCreateMutable();
+    // 初始化该path到一个初始点
+    CGPathMoveToPoint(pathRef, &CGAffineTransformIdentity, 100.0f, 0.0f);
+    // 添加一条直线，从初始点到该函数指定的坐标点
+    CGPathAddLineToPoint(pathRef, &CGAffineTransformIdentity, 150.0f, 100.0f);
+    CGPathMoveToPoint(pathRef, &CGAffineTransformIdentity, 100.0f, 0.0f);
+    CGPathAddLineToPoint(pathRef, &CGAffineTransformIdentity, 100.0f, 150.0f);
+    CGPathCloseSubpath(pathRef);
+    // 关闭该path
+    CGPathCloseSubpath(pathRef);
+    // 将此path添加到Quartz上下文中
+    CGContextAddPath(ctx, pathRef);
+    // 对上下文进行描边
+    CGContextStrokePath(ctx);
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -123,6 +166,8 @@
     CGPoint startP1 = CGPointMake(kWidth*2, kHeight-50);
     [collision addBoundaryWithIdentifier:@"line2" fromPoint:endP toPoint:startP1];
     //    collision.translatesReferenceBoundsIntoBoundary = YES;
+    
+    
     
     [self.animator removeAllBehaviors];
     // 3.开始仿真
